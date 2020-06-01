@@ -182,3 +182,46 @@ console.log(`My name is ${name} and I am ${age} years old.`);
 // }
 // const mamun = new Person('Mamun', 'Apu', '10-2-1996');
 // console.log(mamun.getFullName());
+
+// const ulist = document.querySelector('.items');
+// ulist.remove();
+// ulist.lastElementChild.remove();
+// ulist.firstElementChild.textContent = 'Hello';
+// ulist.children[1].innerText = 'Brad';
+// ulist.lastElementChild.innerHTML = '<h1>Hello There, Does anybody there!</h1>'
+// const ul = document.querySelector('.items');
+// ul.children[1].remove();
+
+// const btn = document.querySelector('.btn');
+// btn.addEventListener('click',function(event){
+//     event.preventDefault();
+//     // document.querySelector('#my-form').style.background = '#ccc';
+//     // document.querySelector('body').classList.add('bg-dark');
+// });
+
+const myform = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const btn = document.querySelector('.btn');
+const errorMssge = document.querySelector('.msg');
+const itemList = document.querySelector('.items');
+
+btn.addEventListener('click',(event)=>{
+    event.preventDefault();
+    // console.log(nameInput.value);
+    if (nameInput.value === '' || emailInput.value === ''){
+        errorMssge.classList.add('error');
+        errorMssge.textContent = 'name and input field can not be empty!';
+        setTimeout(()=> errorMssge.remove(),3000);
+    }
+    else{
+        const list = document.createElement('li');
+        list.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
+        itemList.appendChild(list);
+
+        //clear input
+        nameInput.value = '';
+        emailInput.value = '';
+
+    }
+});
